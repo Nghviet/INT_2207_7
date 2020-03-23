@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
+import '../App.css';
+
 class Signin extends Component {
     constructor(props) {
         super(props);
         this.state = {
             email : '',
             password :'',
-            username :'',
+            name :'',
             token: ''
         }
 
@@ -28,7 +30,7 @@ class Signin extends Component {
             console.log(res);
             if(res.data.code === 1) {
                 this.setState({token : res.data.token});
-                this.props.checkSignin(true);
+                this.props.checkSignin(res.data._id,this.state.name);
             }
         })
         .catch((err =>{
@@ -39,12 +41,22 @@ class Signin extends Component {
     render() {
     let view =      
         <form onSubmit = {this.onSubmit} className = "form">
-            <label> Email </label>
-            <input type = "email" name = "email" onChange = {this.onChange} className = "input" />
-            <label> Password </label>
-            <input type = "password" name = "password" onChange = {this.onChange} className = " input" />
-            <label> Username </label>
-            <input type = "text" name = "username" onChange = {this.onChange} className = "input" />
+            <table className = "table table-borderless text-black ">
+                <tbody>
+                    <tr>
+                        <th> name </th>
+                        <th> <input type = "email" name = "email" onChange = {this.onChange} className = "input" /> </th>
+                    </tr>
+                    <tr>
+                        <th> Email </th>
+                        <th> <input type = "password" name = "password" onChange = {this.onChange} className = " input" /> </th>
+                    </tr>
+                    <tr>
+                        <th> Password </th>
+                        <th> <input type = "text" name = "name" onChange = {this.onChange} className = "input" /> </th>
+                    </tr>
+                </tbody>
+            </table> 
             <button type = "submit"> Submit </button>
         </form> ;
     return view
