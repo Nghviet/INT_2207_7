@@ -44,16 +44,16 @@ class Signin extends Component {
             <table className = "table table-borderless text-black ">
                 <tbody>
                     <tr>
-                        <th> name </th>
-                        <th> <input type = "email" name = "email" onChange = {this.onChange} className = "input" /> </th>
+                        <th> Username </th>
+                        <th> <input type = "text" name = "name" onChange = {this.onChange} className = "input" /> </th>
                     </tr>
                     <tr>
                         <th> Email </th>
-                        <th> <input type = "password" name = "password" onChange = {this.onChange} className = " input" /> </th>
+                        <th> <input type = "email" name = "email" onChange = {this.onChange} className = " input" /> </th>
                     </tr>
                     <tr>
                         <th> Password </th>
-                        <th> <input type = "text" name = "name" onChange = {this.onChange} className = "input" /> </th>
+                        <th> <input type = "password" name = "password" onChange = {this.onChange} className = "input" /> </th>
                     </tr>
                 </tbody>
             </table> 

@@ -3,16 +3,6 @@ import axios from 'axios';
 
 import '../App.css';
 
-import {
-    Nav,
-    Navbar,
-    NavItem,
-    Form,
-    Button,
-    FormControl
-} from "react-bootstrap";
-
-
 class Login extends Component {
     constructor(props) {
         super(props);

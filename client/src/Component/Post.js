@@ -8,34 +8,40 @@ class Post extends Component {
         var post = props.post;
         var date = new Date(post.date);
         var now  = new Date(Date.now());
-    
+        var deltaTime = (now.getTime() - date.getTime())/1000;
+        deltaTime = Math.round(deltaTime);
         var time;
 
-        if(date.getFullYear() === now.getFullYear()) {
-            if(date.getMonth() === now.getMonth()) {
-                if(date.getDate() === now.getDate()) {
-                    if(date.getHours() === now.getHours()) {
-                        if(date.getMinutes() === now.getMinutes()) {
-                            time = (now.getSeconds() - date.getSeconds()) + " seconds ago";
-                        }
-                        else {
-                            time = (now.getMinutes() - date.getMinutes()) + " minutes ago";
-                        }
-                    }
-                    else {
-                        time = (now.getHours() - date.getHours()) + " hours ago";
-                    }
-                }
-                else {
-                    time = (now.getDate() - date.getDate()) + " days ago";
-                }
-            }
-            else {
-                time = (now.getMonth() - now.getMonth()) + " months ago";
-            }
+        if(deltaTime < 60) {
+            time = deltaTime + "seconds ago";
         }
         else {
-            time = (now.getFullYear() - date.getFullYear()) + " years ago";
+            deltaTime = Math.round(deltaTime / 60);
+            if(deltaTime < 60) {
+                time = deltaTime + " minutes ago";
+            }
+            else {
+                deltaTime = Math.round(deltaTime / 60);
+                if(deltaTime < 24) {
+                    time = deltaTime + " hours ago";
+                }
+                else {
+                    deltaTime = Math.round(deltaTime / 24);
+                    if(deltaTime < 30) {
+                        time = deltaTime + "days ago";
+                    }
+                    else {
+                        deltaTime = Math.round(deltaTime / 30);
+                        if(deltaTime < 12) {
+                            time = deltaTime +" months ago";
+                        }
+                        else {
+                            deltaTime = Math.round(deltaTime / 12);
+                            time = " years ago";
+                        }
+                    }
+                }
+            }
         }
         this.state = {
             name : post.name,

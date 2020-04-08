@@ -10,8 +10,9 @@
     "crypto": "^1.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongo-sync": "^2.0.1",
-    "mongodb": "^3.5.4"
+    "mysql": "^2.18.1",
+    "npm": "^6.14.4",
+    "socket.io": "^2.3.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"

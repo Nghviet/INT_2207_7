@@ -7,8 +7,6 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 const api = require('../src/api');
-const db = require('../src/db');
-
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -19,6 +17,5 @@ app.get("/",(req,res) => {
 });
 
 app.listen(port,() =>{
-	console.log(port);
 	console.log("Listening");
 });

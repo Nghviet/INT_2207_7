@@ -23,8 +23,8 @@ class Newsfeed extends Component {
         };  
         axios.post('API/allPost',{userID : this.state.id})
         .then(res => {
-            var posts = this.state.post;
             this.setState({post : res.data});
+            console.log(res.data);
         }).catch(err =>{
             console.log(err)
         });
@@ -36,7 +36,6 @@ class Newsfeed extends Component {
             axios.post('API/allPost',{userID : this.state.id})
             .then( res => {
                 if(res != null) {
-                    var posts = this.state.post;
                     this.setState({post : res.data});
                 }
             })
@@ -96,16 +95,15 @@ class Newsfeed extends Component {
                     </form>
                 </Card.Body>
             </Card>
-            <>
+            <div class = "">
                 {this.state.newPost.map(post => (
                     <NewPost key = {post.id} post = {post.post} name = {this.state.name} />
                 ))}
-            </>
-            <>
+
                 {this.state.post.map(post => (
                     <Post key = {post.id} post = {post} />
                 ))}
-            </>
+            </div>
         </div>);
     }
 }

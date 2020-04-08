@@ -1,4 +1,9 @@
 import React, {Component} from 'react';
+import {
+  BrowserRouter as Router,
+  Redirect
+} from 'react-router-dom';
+
 import './App.css';
 
 import Gate from './Gate';
@@ -12,8 +17,6 @@ class App extends Component {
             name : localStorage.getItem('name')
         }
     }
-
-
 
     changeState = (id,name) => {
         if(id != null) this.setState({id : id,name:name});
@@ -35,7 +38,10 @@ class App extends Component {
         }
         else {
             return (
-                <Gate changeState = {this.changeState} />
+                <Router>
+                    <Redirect to="/" />
+                    <Gate changeState = {this.changeState} />
+                </Router>
             );
         }
     }
